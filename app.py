@@ -1,6 +1,8 @@
 import os
 
-restaurantes = ['MDV','The Best']
+restaurantes = [{'nome':'restaurante MDV','categoria':'Alimento','ativo':'ativo':False},       
+                {'nome':'Santa','categoria':'carne','ativo':True},
+                {'nome':'MDL','categoria':'Sushi','ativo':False}]
 
 def exibir_nome_do_programa():
  print("""Sabor MDV
@@ -24,18 +26,36 @@ def opcao_invalida():
 
 def exibir_subtitulo(texto):
     os.system('clear') #os.system('clear')
+    linha = '*' * (len(texto))
+    print(linha)
     print(texto)
+    print(linha)
     print()
 
 def cadastrar_novo_restaurante():
    exibir_subtitulo('Cadastro do novo restaurante:')
    nome_do_restaurante = input('Digite o nome do novo restaurante')
-   restaurantes.append(nome_do_restaurante)
+   categoria = input(f'Digite a categoria do novo restaurante {nome_do_restaurante}: ')
+   dado_do_restaurante ={'nome':nome_do_restaurante,'categoria':categoria,'ativo':False}
+   restaurantes.append(dado_do_restaurante)
    print(f'O restaurante {nome_do_restaurante} foi cadastro com sucesso!')
+   voltar_ao_menu_principal()
+
+def listar_restaurante():
+   exibir_subtitulo('listando os restaurante')
+
+print(f'{"Nome do restaurante".ljust(22)} | Status')
+for restaurante in restaurantes:
+    nome_restaurante = restaurante['nome']
+    categoria = restaurante['categoria']
+    ativo = 'ativado' if restaurante['ativo'] else 'desativado'
+    print(f'- {nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}')
+
+voltar_ao_menu_principal()
 
 def escolher_opcao():
- try:
-   opcao_escolhida = int(input('Escolha uma opção: '))
+   try:
+      opcao_escolhida = int(input('Escolha uma opção: '))
 
    if opcao_escolhida == 1:
      print('Cadastrar restaurante')
@@ -47,7 +67,7 @@ def escolher_opcao():
       finaliza_app()
    else:
        opcao_invalida()
- except:
+   except:
        opcao_invalida()
 
 def main():
@@ -57,4 +77,4 @@ def main():
        escolher_opcao()
 
        if __name__ == '__main__':
-           main()
+           main()       
