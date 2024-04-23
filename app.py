@@ -1,6 +1,6 @@
 import os
 
-restaurantes = [{'nome':'restaurante MDV','categoria':'Alimento','ativo':'ativo':False},       
+restaurantes = [{'nome':'restaurante','categoria':'Alimento','ativo':False},       
                 {'nome':'Santa','categoria':'carne','ativo':True},
                 {'nome':'MDL','categoria':'Sushi','ativo':False}]
 
@@ -33,6 +33,13 @@ def exibir_subtitulo(texto):
     print()
 
 def cadastrar_novo_restaurante():
+   '''essa função é responsável por cadastrar um novo restaurante
+input:
+-nome do restaurante
+-categoria  
+output:
+-adicionar um novo restaurante a lista de restaurantes
+'''
    exibir_subtitulo('Cadastro do novo restaurante:')
    nome_do_restaurante = input('Digite o nome do novo restaurante')
    categoria = input(f'Digite a categoria do novo restaurante {nome_do_restaurante}: ')
@@ -54,20 +61,20 @@ for restaurante in restaurantes:
 voltar_ao_menu_principal()
 
 def escolher_opcao():
-   try:
-      opcao_escolhida = int(input('Escolha uma opção: '))
+ try:
+  opcao_escolhida = int(input('Escolha uma opção: '))
 
-   if opcao_escolhida == 1:
+  if opcao_escolhida == 1:
      print('Cadastrar restaurante')
-   elif opcao_escolhida == 2:
+  elif opcao_escolhida == 2:
      print('Listar restaurantes')
-   elif opcao_escolhida == 3:
+  elif opcao_escolhida == 3:
      print('Ativar restaurantes')
-   elif opcao_escolhida == 4:
+  elif opcao_escolhida == 4:
       finaliza_app()
-   else:
+  else:
        opcao_invalida()
-   except:
+ except:  
        opcao_invalida()
 
 def main():
